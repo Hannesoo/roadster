@@ -7,4 +7,7 @@ speed_kmph = np.linspace(1., 200., 1000)
 consumption_Whpkm = roadster.consumption(speed_kmph)
 
 plt.plot(speed_kmph, consumption_Whpkm)
+plt.xlabel('$[km/h]$')
+plt.ylabel('$[Wh/km]$')
+plt.savefig('kmph_Whpkm.png')
 plt.show()

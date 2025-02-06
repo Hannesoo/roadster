@@ -90,6 +90,7 @@ def reach(C, route):
 
 
 if __name__ == "__main__":
-    print(time_to_destination(70, 'speed_anna', 100))
-    print(time_to_destination(69, 'speed_elsa', 100))
-    print(total_consumption(70, 'speed_anna', 100))
+    #print(time_to_destination(70, 'speed_anna', 100))
+    #print(time_to_destination(69, 'speed_elsa', 100))
+    #print(total_consumption(70, 'speed_anna', 100))
+    pass
