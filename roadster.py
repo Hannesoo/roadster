@@ -79,14 +79,42 @@ def total_consumption(x, route, n):
     return E
 
 ### PART 3A ###
-def distance(T, route): 
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
-    raise NotImplementedError('distance not implemented yet!')
+
+def f(T, s, route):
+    return time_to_destination(s, route, 1000)-T
+
+def f_prim(s, route):
+    return 1/velocity(s, route)
+
+def distance(T, route):
+    distance_km, speed_kmph = load_route(route)
+    s_guess = sum(speed_kmph)/len(speed_kmph) * T #start gissning s = v*t
+    s_i = s_guess
+    err = 10**(-3)
+    while err > 10**(-4):
+        s_ip1 = s_i - f(T, s_i, route)/f_prim(s_i, route)
+        err = np.abs(s_ip1-s_i)
+        s_i = s_ip1
+    return s_i
 
 ### PART 3B ###
+def g(s, C, route):
+    return total_consumption(s, route, 1600) - C
+
+def g_prim(s, route):
+    return consumption(velocity(s, route))
+
 def reach(C, route):
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
-    raise NotImplementedError('reach not implemented yet!')
+    distance_km, speed_kmph = load_route(route)
+    medel_v = sum(speed_kmph)/len(speed_kmph)
+    s_guess = #Ingen aning
+    s_i = s_guess
+    err = 10**(-3)
+    while err > 10**(-4):
+        s_ip1 = s_i - g(s_i, C, route)/g_prim(s_i, route)
+        err = np.abs(s_ip1-s_i)
+        s_i = s_ip1
+    return s_i
 
 
 if __name__ == "__main__":
