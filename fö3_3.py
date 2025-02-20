@@ -11,3 +11,5 @@ y = f(x)
 I = trapezoid(y, x)
 
 print(I)
+
+#Ebba klevås
