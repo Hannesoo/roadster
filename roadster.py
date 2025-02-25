@@ -81,7 +81,7 @@ def total_consumption(x, route, n):
 ### PART 3A ###
 
 def f(T, s, route):
-    return time_to_destination(s, route, 1000)-T
+    return time_to_destination(s, route, 10000000)-T
 
 def f_prim(s, route):
     return 1/velocity(s, route)
@@ -99,7 +99,7 @@ def distance(T, route):
 
 ### PART 3B ###
 def g(s, C, route):
-    return total_consumption(s, route, 1600) - C
+    return total_consumption(s, route, 10000000) - C
 
 def g_prim(s, route):
     return consumption(velocity(s, route))
@@ -107,11 +107,12 @@ def g_prim(s, route):
 def reach(C, route):
     distance_km, speed_kmph = load_route(route)
     medel_v = sum(speed_kmph)/len(speed_kmph)
-    s_guess = #Ingen aning
-    s_i = s_guess
+    s_guess = C / consumption(medel_v)      # startgissning: konsumtion per kilometer dividerat med någon form av medelkonsumption
+    s_i = min(s_guess, distance_km[-2]) 
     err = 10**(-3)
     while err > 10**(-4):
         s_ip1 = s_i - g(s_i, C, route)/g_prim(s_i, route)
+        s_ip1 = min(s_ip1, distance_km[-1])
         err = np.abs(s_ip1-s_i)
         s_i = s_ip1
     return s_i
@@ -121,4 +122,8 @@ if __name__ == "__main__":
     #print(time_to_destination(70, 'speed_anna', 100))
     #print(time_to_destination(69, 'speed_elsa', 100))
     #print(total_consumption(70, 'speed_anna', 100))
-    pass
+    distance_km, speed_kmph = load_route('speed_elsa')
+    print(distance_km[-1])
+    #print(distance(0.5, 'speed_anna'))
+    print(reach(10000, 'speed_elsa'))
+    print(reach(10000, 'speed_anna'))

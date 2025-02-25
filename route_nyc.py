@@ -27,5 +27,22 @@ def route_nyc(t,x):
 
 ### PART 4A ###
 def nyc_route_traveler_euler(t0,h):
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
-    raise NotImplementedError('nyc_route_traveler_euler not implemented yet!')
+    t_i = t0
+    x_i = 0
+    time_h = [t_i]
+    distance_km = [x_i]
+    speed_km = [route_nyc(t_i, x_i)]
+    while x_i < 60:
+        t_ip1 = t_i + h
+        x_ip1 = x_i + h*route_nyc(t_i, x_i)
+        if x_ip1 > 60:
+            x_ip1 = 60
+            h_2 = (60 - x_i)/route_nyc(t_i, x_i)
+            t_ip1 = t_i + h_2
+        x_i = x_ip1
+        t_i = t_ip1
+        time_h.append(t_i)
+        distance_km.append(x_i)
+        speed_km.append(route_nyc(t_i, x_i))
+    return time_h, distance_km, speed_km
+    
