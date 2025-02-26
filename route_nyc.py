@@ -31,18 +31,21 @@ def nyc_route_traveler_euler(t0,h):
     x_i = 0
     time_h = [t_i]
     distance_km = [x_i]
-    speed_km = [route_nyc(t_i, x_i)]
+    speed_km = [float(route_nyc(t_i, x_i))]
     while x_i < 60:
         t_ip1 = t_i + h
-        x_ip1 = x_i + h*route_nyc(t_i, x_i)
+        x_ip1 = x_i + h*float(route_nyc(t_i, x_i))
         if x_ip1 > 60:
             x_ip1 = 60
-            h_2 = (60 - x_i)/route_nyc(t_i, x_i)
+            h_2 = (60 - x_i)/float(route_nyc(t_i, x_i))
             t_ip1 = t_i + h_2
         x_i = x_ip1
         t_i = t_ip1
         time_h.append(t_i)
         distance_km.append(x_i)
-        speed_km.append(route_nyc(t_i, x_i))
+        speed_km.append(float(route_nyc(t_i, x_i)))
+    time_h = np.array(time_h)
+    distance_km = np.array(distance_km)
+    speed_km = np.array(speed_km)
     return time_h, distance_km, speed_km
     
