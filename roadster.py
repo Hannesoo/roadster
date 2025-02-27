@@ -119,11 +119,13 @@ def reach(C, route):
 
 
 if __name__ == "__main__":
-    #print(time_to_destination(70, 'speed_anna', 100))
-    #print(time_to_destination(69, 'speed_elsa', 100))
-    #print(total_consumption(70, 'speed_anna', 100))
-    distance_km, speed_kmph = load_route('speed_elsa')
-    print(distance_km[-1])
-    #print(distance(0.5, 'speed_anna'))
-    print(reach(10000, 'speed_elsa'))
-    print(reach(10000, 'speed_anna'))
+    #print(reach(10000, 'speed_elsa'))
+    #print(reach(10000, 'speed_anna'))
+    distance_anna_05h = distance(0.5, 'speed_anna')
+    distance_elsa_05h = distance(0.5, 'speed_elsa')
+    reach_anna_10000Wh = reach(10000, 'speed_anna')
+    reach_elsa_10000Wh = reach(10000, 'speed_elsa')
+    print(f'Anna kommer {distance_anna_05h} km på 30 min.')
+    print(f'Elsa kommer {distance_elsa_05h} km på 30 min.')
+    print(f'Anna kommer {reach_anna_10000Wh} km med 10000Wh')   
+    print(f'Elsa kommer {reach_elsa_10000Wh} km med 10000Wh')    

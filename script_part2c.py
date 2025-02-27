@@ -17,16 +17,16 @@ elsa_exakt_e = roadster.total_consumption(distance_km_elsa[-1], 'speed_elsa', n_
 n = [2**x for x in range(21)]
 
 times = [roadster.time_to_destination(distance_km_anna[-1], 'speed_anna', x) for x in n]
-fel_time = [abs(x - anna_exakt_t) for x in times] 
+fel_time = [abs(x - anna_exakt_t) for x in times]   # fel för time_to_destination för olika n
 
 times_2 = [roadster.time_to_destination(distance_km_elsa[-1], 'speed_elsa', x) for x in n]
-fel_time_2 = [abs(x - elsa_exakt_t) for x in times_2] 
+fel_time_2 = [abs(x - elsa_exakt_t) for x in times_2] # # fel för time_to_destination för olika n
 
 counsumtions = [roadster.total_consumption(distance_km_anna[-1], 'speed_anna', x) for x in n]
-fel_e = [abs(x - anna_exakt_e) for x in counsumtions] 
+fel_e = [abs(x - anna_exakt_e) for x in counsumtions]  # fel för total_consumption för olika n
 
 counsumtions_2 = [roadster.total_consumption(distance_km_elsa[-1], 'speed_elsa', x) for x in n]
-fel_e_2 = [abs(x - elsa_exakt_e) for x in counsumtions_2] 
+fel_e_2 = [abs(x - elsa_exakt_e) for x in counsumtions_2]  # fel för total_consumption för olika n
 
 
 c = fel_time[0] - 1

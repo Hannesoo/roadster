@@ -35,7 +35,7 @@ def nyc_route_traveler_euler(t0,h):
     while x_i < 60:
         t_ip1 = t_i + h
         x_ip1 = x_i + h*float(route_nyc(t_i, x_i))
-        if x_ip1 > 60:
+        if x_ip1 > 60:        # h anpassas när x blir större än 60
             x_ip1 = 60
             h_2 = (60 - x_i)/float(route_nyc(t_i, x_i))
             t_ip1 = t_i + h_2
@@ -49,3 +49,14 @@ def nyc_route_traveler_euler(t0,h):
     speed_km = np.array(speed_km)
     return time_h, distance_km, speed_km
     
+
+if __name__ == '__main__':
+    t_1, x_1, _ = nyc_route_traveler_euler(4, 0.1)        # tider och distanser för ruttstart 04:00
+    t_2, x_2, _ = nyc_route_traveler_euler(9.5, 0.1)      # tider och distanser för ruttstart 09:30
+    sluttid_04 = t_1[-1]
+    sluttid_0930 = t_2[-1]
+    färdtid_04 = sluttid_04-4
+    frädtid_0930 = sluttid_0930 - 9.5
+    print(f'om man börjar åka 04 kommer man fram {sluttid_04} och resan tar {färdtid_04} h eller {färdtid_04*60} min.')
+    print(f'om man börjar åka 09:30 kommer man fram {sluttid_0930} och resan tar {frädtid_0930} h eller {frädtid_0930*60} min')
+

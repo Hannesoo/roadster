@@ -213,9 +213,6 @@ def test_part4a_E():
 
 
 if __name__ == "__main__":
-    #pytest.main([ "-k" ,"part1" ])
-    #pytest.main([ "-k" ,"part2" ])
-    #pytest.main([ "-k" ,"part3" ])
-    pytest.main([ "-k" ,"part4" ])
+    pytest.main([ "-k" ,"part" ])
 
 
